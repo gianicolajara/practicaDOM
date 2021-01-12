@@ -1,0 +1,74 @@
+.nav {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+}
+
+.menu {
+  background-color: rgb(94, 140, 224);
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 4.375em;
+}
+
+.menu .menu__title {
+  display: flex;
+  align-items: center;
+}
+
+.menu__list {
+  width: 100%;
+  position: absolute;
+  list-style: none;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-left: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  background-color: rgba(0, 0, 0, 0.7);
+  height: 100vh;
+  left: -100%;
+  transition: 0.3s left ease;
+}
+
+.menu__list.menu__list--open {
+  left: 0;
+}
+
+.menu__item {
+  text-align: center;
+  width: 100%;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.menu__item:hover {
+  background-color: rgb(94, 140, 224);
+}
+
+.menu__item:hover .menu__link {
+  color: white;
+}
+
+.menu__link {
+  color: rgb(107, 157, 250);
+  text-decoration: none;
+  font-size: 1.5em;
+  font-family: var(--font-menu);
+  padding: 1.5625em;
+  width: 100%;
+  text-align: center;
+}
+
+.menu .hamburger {
+  position: relative;
+  z-index: 50000;
+}
+
+.hamburger--white {
+  background-color: white;
+}

@@ -1,0 +1,32 @@
+@import "./hamburgerMenu.css";
+
+:root {
+  --font-menu: "Roboto", sans-serif;
+  --font-size-title: 1.5em;
+}
+
+html {
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+*,
+*::after,
+*::before {
+  box-sizing: inherit;
+}
+
+.title {
+  font-family: var(--font-menu);
+  font-size: var(--font-size-title);
+  text-align: center;
+  margin: 0;
+  padding: 15px;
+}
+
+.section {
+  padding-bottom: 1000px;
+}
+
+.section .title {
+  padding-top: 120px;
+}
