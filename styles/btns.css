@@ -1,0 +1,38 @@
+.btn {
+  border: 0;
+  padding: 15px;
+  cursor: pointer;
+  background-color: var(--main-color);
+  color: white;
+  font-family: var(--main-font);
+  margin: 5px;
+}
+
+.btn:disabled {
+  background-color: var(--disabled-color);
+}
+
+.btn-dark {
+  width: 70px;
+  height: 70px;
+  background-color: var(--main-color);
+  position: fixed;
+  bottom: 0;
+  right: 75px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  cursor: pointer;
+  z-index: 11000;
+}
+
+#darkcheck {
+  display: none;
+}
+
+.dark-icon {
+  color: white;
+}

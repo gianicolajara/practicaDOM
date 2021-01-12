@@ -1,3 +1,5 @@
+import { validarDatos } from "./validation_node.js";
+
 export function hamburgerMenu(menu, btn, menuLink) {
   try {
     const doc = document;
@@ -8,6 +10,7 @@ export function hamburgerMenu(menu, btn, menuLink) {
         doc.querySelector(btn).classList.toggle("is-active");
         doc.querySelector(menu).classList.toggle("menu__list--open");
         doc.querySelector(btn).classList.toggle("hamburger--white");
+        doc.querySelector("body").classList.toggle("scroll--hidden");
       }
 
       if (e.target.matches(menuLink)) {
@@ -15,22 +18,10 @@ export function hamburgerMenu(menu, btn, menuLink) {
         doc
           .querySelector(btn)
           .classList.remove("hamburger--white", "is-active");
+        doc.querySelector("body").classList.remove("scroll--hidden");
       }
     });
   } catch (error) {
     console.error(error);
   }
 }
-
-const validarDatos = ([...datos]) => {
-  const doc = document;
-  for (let dato of datos) {
-    if (typeof dato !== "string" || !dato)
-      throw new Error(`El nombre del nodo debe ser string: ${dato}`);
-    if (dato.charAt(0) !== "." && dato.charAt(0) !== "#") {
-      throw new Error(`Debe ser una clase o id valido: ${dato}`);
-    }
-    if (!document.body.contains(doc.querySelector(dato)))
-      throw new Error(`No existe este nodo: ${dato}`);
-  }
-};

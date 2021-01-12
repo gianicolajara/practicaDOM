@@ -1,0 +1,31 @@
+{
+  "santos": [
+    {
+      "nombre": "sadsa",
+      "constelacion": "dsadsa",
+      "id": 5
+    }
+  ],
+  "dioses": [
+    {
+      "id": 1,
+      "nombre": "Athena",
+      "de": "Tierra"
+    },
+    {
+      "id": 2,
+      "nombre": "Poseidon",
+      "de": "Mar"
+    },
+    {
+      "id": 3,
+      "nombre": "Hades",
+      "de": "Inframundo"
+    },
+    {
+      "id": 4,
+      "nombre": "Zeus",
+      "de": "Cielo"
+    }
+  ]
+}

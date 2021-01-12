@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menu Hamburguesa</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-    <link rel="stylesheet" href="/styles/hamburguers.css">
-    <link rel="stylesheet" href="/styles/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.1.3/hamburgers.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron&family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/styles-dist.css">
 </head>
 <body>
     <header class="header">
@@ -27,27 +27,294 @@
                     <li class="menu__item"><a href="#section3" class="menu__link">Sección 3</a></li>
                     <li class="menu__item"><a href="#section4" class="menu__link">Sección 4</a></li>
                     <li class="menu__item"><a href="#section5" class="menu__link">Sección 5</a></li>
+                    <li class="menu__item"><a href="#section6" class="menu__link">User agent</a></li>
+                    <li class="menu__item"><a href="#section7" class="menu__link">Cam</a></li>
+                    <li class="menu__item"><a href="#section8" class="menu__link">Geolocalización</a></li>
+                    <li class="menu__item"><a href="#section9" class="menu__link">Filtro</a></li>
+                    <li class="menu__item"><a href="#section10" class="menu__link">Sorteo</a></li>
+                    <li class="menu__item"><a href="#section11" class="menu__link">Carrousel</a></li>
+                    <li class="menu__item"><a href="#section12" class="menu__link">Videos</a></li>
+                    <li class="menu__item"><a href="#section13" class="menu__link">Formulario</a></li>
+                    <li class="menu__item"><a href="#section14" class="menu__link">xhr</a></li>
+
                 </ul>
             </div>
         </nav>
     </header>
+    <aside class="panel">
+        <ul class="menu__desktop">
+            <li class="menu__item"><a href="#section1" class="menu__link">Sección 1</a></li>
+            <li class="menu__item"><a href="#section2" class="menu__link">Sección 2</a></li>
+            <li class="menu__item"><a href="#section3" class="menu__link">Sección 3</a></li>
+            <li class="menu__item"><a href="#section4" class="menu__link">Sección 4</a></li>
+            <li class="menu__item"><a href="#section5" class="menu__link">Sección 5</a></li>
+            <li class="menu__item"><a href="#section6" class="menu__link">User agent</a></li>
+            <li class="menu__item"><a href="#section7" class="menu__link">Cam</a></li>
+            <li class="menu__item"><a href="#section8" class="menu__link">Geolocalización</a></li>
+            <li class="menu__item"><a href="#section9" class="menu__link">Filtro</a></li>
+            <li class="menu__item"><a href="#section10" class="menu__link">Sorteo</a></li>
+            <li class="menu__item"><a href="#section11" class="menu__link">Carrousel</a></li>
+            <li class="menu__item"><a href="#section12" class="menu__link">Videos</a></li>
+            <li class="menu__item"><a href="#section13" class="menu__link">Formulario</a></li>
+            <li class="menu__item"><a href="#section14" class="menu__link">xhr</a></li>
+
+        </ul>
+    </aside>
     <main class="main">
+            <div class="scroll" id="scroll">
+                <i class="fas fa-caret-up scroll-up"></i>
+            </div>
+            <div>
+                <label for="darkcheck" class="btn-dark">
+                    <i class="fas fa-moon dark-icon"></i>
+                    <input type="checkbox" name="darkcheck" id="darkcheck">
+                </label>
+            </div>
         <section id="section1" class="section">
-            <h2 class="title">Sección 1</h2>
+            <h2 class="title title--pt100">Sección 1</h2>
+            <br>
+            <article class="article align-center">
+                <h2 class="title">Reloj y alarma</h2>
+                <br>
+                <div class="group-btn">
+                    <button class="btn" id="start-clock">Iniciar reloj</button>
+                    <button class="btn" id="stop-clock">Detener reloj</button>
+                    <button class="btn" id="start-alarm">Iniciar alarma</button>
+                    <button class="btn" id="stop-alarm">Detener alarma</button>
+                </div>
+            </article>
         </section>
         <section id="section2" class="section">
-            <h2 class="title">Sección 2</h2>
+            <h2 class="title title--pt100">Sección 2</h2>
+            <br>
+            <article class="article align-center">
+                <h2 class="title">Eventos Teclado</h2>
+                <div class="box" id="scene">
+                    <div class="circle" id="player"></div>
+                </div>
+            </article>
         </section>
         <section id="section3" class="section">
-            <h2 class="title">Sección 3</h2>
+            <h2 class="title title--pt100">Sección 3</h2>
+            <br>
+            <article class="article align-center">
+                <h1 id="countdown" class="title"></h1>
+            </article>
         </section>
         <section id="section4" class="section">
-            <h2 class="title">Sección 4</h2>
+            <h2 class="title title--pt100">Sección 4</h2>
+            <br>
+            <article class="article align-center flex-column" id="responsive">
+              <div id="video"><a href="https://www.youtube.com/watch?v=r4_IVqlMfEY" target="_blank" rel="noopener noreferrer">Ver video</a></div>
+              <div id="map"><a href="https://goo.gl/maps/tsRXnThQX9XrR2ho8" target="_blank" rel="noopener noreferrer">Ver mapa</a></div>  
+            </article>
         </section>
         <section id="section5" class="section">
-            <h2 class="title">Sección 5</h2>
+            <h2 class="title title--pt100">Sección 5</h2>
+            <br>
+            <article class="article align-center">
+                <div>
+                    <form action="" method="get" id="formulario-abrir">
+                        <div class="form-group">
+                            <label for="url" class="paragraph">Url</label>
+                            <input type="text" name="url" id="url" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="ancho" class="paragraph">ancho</label>
+                            <input type="number" name="ancho" id="ancho" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="alto" class="paragraph">alto</label>
+                            <input type="number" name="alto" id="alto" required>
+                        </div>
+                        <input type="submit" value="Ver" id="ver" name="ver">
+                        <input type="submit" value="Cerrar" id="cerrar" name="cerrar">
+                    </form>
+                </div>
+            </article>
         </section>
+        <section id="section6" class="section flex-column">
+            <h2 class="title title--pt100">User Agent</h2>
+            <small class="small">Demostración de uso del User Agent en Navigator</small>
+            <br>
+            <article class="article align-center ">
+                <p id="navigator-user-agent" class="paragraph"></p>
+            </article>
+        </section>
+        <section id="section7" class="section flex-column">
+            <h2 class="title title--pt100">cam</h2>
+            <small class="small">Demostración del uso de la camara</small>
+            <br>
+            <video id="videoCam" width="300" height="300" controls></video>
+        </section>
+        <section id="section8" class="section flex-column">
+            <h2 class="title title--pt100">Geolocalización</h2>
+            <small class="small">Demostración del uso de Geolocalización</small>
+            <br>
+            <p id="latitud" class="paragraph"></p>
+            <p id="longitud" class="paragraph"></p>
+            <p id="precision" class="paragraph"></p>
+            <a id="geoMap" target="_blank" rel="noopener noreferrer"></a>
+        </section>
+        <section id="section9" class="section flex-column">
+            <h2 class="title title--pt100">Filtro</h2>
+            <small class="small">Demostración del uso de Geolocalización</small>
+            <br>
+            <label for="text-filtro">Filtrado:</label>
+            <input type="search" name="texto-filtro" id="texto-filtro">
+            <div class="container flex-row" id="container-card">
+                    <figure class="card">
+                        <img src="http://placeimg.com/200/400/arch" alt="arch">
+                        <figcaption>arch</figcaption>
+                    </figure>
+                    <figure class="card">
+                        <img src="http://placeimg.com/200/400/nature" alt="nautre">
+                        <figcaption>nature</figcaption>
+                    </figure>
+                    <figure class="card">
+                        <img src="http://placeimg.com/200/400/people" alt="people">
+                        <figcaption>people</figcaption>
+                    </figure>
+                    <figure class="card">
+                        <img src="http://placeimg.com/200/400/tech" alt="tech">
+                        <figcaption>tech</figcaption>
+                    </figure>
+                    <figure class="card">
+                        <img src="http://placeimg.com/200/400/any" alt="any">
+                        <figcaption>any</figcaption>
+                    </figure>
+            </div>
+        </section>
+        <section id="section10" class="section flex-column">
+            <h2 class="title title--pt100">Sorteo</h2>
+            <small class="small">Demostración del uso de Geolocalización</small>
+            <br>
+            <div class="container flex-column">
+                <ul class="lista-sorteo">
+                    <li class="lista-sorteo__item">Javascript</li>
+                    <li class="lista-sorteo__item">Java</li>
+                    <li class="lista-sorteo__item">C</li>
+                    <li class="lista-sorteo__item">C++</li>
+                    <li class="lista-sorteo__item">C#</li>
+                </ul>
+                <button id="btn-sorteo">Sortear</button>
+            </div>
+        </section>
+        <section id="section11" class="section flex-column">
+            <h2 class="title title--pt100">Carrousel</h2>
+            <small class="small">Demostración de un Carrousel</small>
+            <br>
+            <div class="container">
+                <div class="carrousel">
+                    <button class="btn-carrousel left-carrousel"><</button>
+                    <button class="btn-carrousel right-carrousel">></button>
+                    <div class="carrousel__item">
+                        <img src="http://placeimg.com/800/400/nature" alt="nature" class="img-carrousel">
+                    </div>
+                    <div class="carrousel__item">
+                        <h1 class="title">Hola</h1>
+                        <p class="paragraph">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam non facilis praesentium alias id nulla! Sapiente atque eveniet aliquam consectetur, culpa dolore nobis tempore possimus impedit nemo odit doloremque officia?</p>
+                    </div>
+                    <div class="carrousel__item">
+                        <img src="http://placeimg.com/800/400/any" alt="any" class="img-carrousel">
+                    </div>
+                    <div class="carrousel__item">
+                        <h1 class="title">Chao</h1>
+                        <p class="paragraph">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam non facilis praesentium alias id nulla! Sapiente atque eveniet aliquam consectetur, culpa dolore nobis tempore possimus impedit nemo odit doloremque officia?</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="section12" class="section flex-column">
+            <h2 class="title title--pt100">Videos</h2>
+            <small class="small">Demostración de videos</small>
+            <br>
+            <div class="container container-video">
+                <div class="container-video container-video--miniature">
+                    <div class="video-miniature__head">
+                        <video class="video--miniature">
+                            <source src="assets/videos/Cateye.mp4" type="video/mp4"> 
+                        </video>
+                    </div>
+                    <div class="video-miniature__body">
+                        <h3 class="title">Title</h3>
+                        <p class="paragraph">El Gato</p>
+                        <p class="paragraph">1.230 Reproducciones</p>
+                        <p class="paragraph">Hace 5 años</p>
+                    </div>
+                </div>
+            </div>
+           <div class="container container-videos">
+                <div class="container-video">
+                    <div class="video__head">
+                        <video class="video" controls>
+                            <source src="assets/videos/Cateye.mp4" type="video/mp4"> 
+                        </video>
+                    </div>
+                    <div class="video__body">
+                        <h3 class="title">Title</h3>
+                        <p class="paragraph">El Gato</p>
+                        <p class="paragraph">1.230 Reproducciones</p>
+                        <p class="paragraph">Hace 5 años</p>
+                    </div>
+                </div>
+                <div class="container-video">
+                    <div class="video__head">
+                        <video class="video" controls>
+                            <source src="assets/videos/Coffee.mp4" type="video/mp4"> 
+                        </video>
+                    </div>
+                    <div class="video__body">
+                        <h3 class="title">Title</h3>
+                        <p class="paragraph">El Gato</p>
+                        <p class="paragraph">1.230 Reproducciones</p>
+                        <p class="paragraph">Hace 5 años</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="section13" class="section flex-column">
+            <h2 class="title title--pt100">Formulario</h2>
+            <small class="small">Formulario</small>
+            <br>
+            <div class="container">
+                <form action="post" class="form-message">
+                    <legend>Envianos tus comentarios</legend>
+                    <div class="group-form">
+                        <input type="text" class="input-form" name="name" id="name" placeholder="Username" title="name just accept letters and spaces" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" required>
+                    </div>
+                    <div class="group-form">
+                        <input type="email" class="input-form" name="email" id="email" placeholder="Email" title="wrong Email" pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" required>
+                    </div>
+                    <div class="group-form">
+                        <input type="text" class="input-form" name="subject" id="subject" placeholder="subject" title="subject is required" required>
+                    </div>
+                    <div class="group-form">
+                        <textarea name="message" class="input-form" id="message" cols="30" rows="10" placeholder="Message" title="message limit is 255 letters" data-pattern="^.{1,255}$" required></textarea>
+                    </div>
+                    <input type="submit" value="Send">
+                    <div class="contact-form-loader d-none">
+                        <img src="./assets/loader/tail-spin.svg" alt="loader">
+                    </div>
+                    <div class="contact-form-response d-none">
+                        <p>Los datos han sido enviados</p>
+                    </div>
+                </form>
+            </div>
+        </section>
+        <section id="section13" class="section flex-column">
+            <h2 class="title title--pt100">XHR</h2>
+            <small class="small">xhr</small>
+            <br>
+            <div class="container">
+                <select name="xhr" id="xhr"></select>
+            </div>
+        </section>
+    
     </main>
+    <div class="online">
+        <p class="p-online paragraph" id="online-p"></p>
+    </div>
     <script src="https://kit.fontawesome.com/337aedfa47.js" crossorigin="anonymous"></script>
     <script src="scripts/scripts.js" type="module"></script>
 </body>

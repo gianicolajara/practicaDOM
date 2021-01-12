@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/crud-styles.css">
+</head>
+<body>
+    
+    <section>
+        <article class="article-crud">
+            <div class="brand brand--title">
+                <h1 class="title">CRUD AJAX</h1>
+            </div>
+            <div class="container container--form">
+                <form action="" class="form-crud">
+                    <div class="group-form">
+                        <input type="text" name="nombre" placeholder="Ingrese el nombre" required>
+                    </div>
+                    <div class="group-form">
+                        <input type="text" name="constelacion" placeholder="Ingrese la constelacion" required>
+                    </div>
+                    <button type="submit" class="btn btn--blue">Subir</button>
+                    <input type="hidden" name="id">
+                    <div class="message d-none">
+                        <p class="message__p">Esto es un mensaje</p>
+                    </div>
+                </form>
+            </div>
+            <div class="container">
+                <table class="table-crud">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Constelacion</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </article>
+    </section>
+    <template id="template-crud">
+        <tr>
+            <td class="id"></td>
+            <td class="nombre"></td>
+            <td class="constelacion"></td>
+            <td class="botones">
+                <button class="btn-edit btn btn--green">Editar</button>
+                <button class="btn-delete btn btn--red">Eliminar</button>
+            </td>
+        </tr>
+    </template>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        const d = document,
+        $table = d.querySelector(".table-crud"),
+        $form = d.querySelector(".form-crud"),
+        $title = d.querySelector(".title"),
+        $template = d.getElementById("template-crud").content,
+        $fragment = d.createDocumentFragment(),
+        $message = d.querySelector(".message");
+
+        const getAll = async () => {
+            try {
+                const operation = await axios.get("http://localhost:5555/santos"),
+                data = operation.data;
+
+                data.forEach((elem) => {
+                    $template.querySelector(".id").textContent = elem.id;
+                    $template.querySelector(".nombre").textContent = elem.nombre;
+                    $template.querySelector(".constelacion").textContent = elem.constelacion;
+                    $template.querySelector(".btn-delete").setAttribute("data-id", `${elem.id}`);
+                    $template.querySelector(".btn-edit").setAttribute("data-nombre", `${elem.nombre}`);
+                    $template.querySelector(".btn-edit").setAttribute("data-constelacion", `${elem.constelacion}`);
+                    $template.querySelector(".btn-edit").setAttribute("data-id", `${elem.id}`);
+
+                    let $cloneTemplate = d.importNode($template, true);
+
+                    $fragment.appendChild($cloneTemplate);
+                });
+
+                $table.querySelector("tbody").appendChild($fragment);
+
+            } catch (error) {
+                console.error(error || "Sucedio un error");
+                $message.classList.add("message--red");
+                $message.children[0].textContent = error || "Sucedio un error";
+                $message.classList.remove("d-none");
+                setTimeout(() => {
+                    $message.classList.add("d-none");
+                }, 5000);
+            }
+        }
+
+        d.addEventListener("DOMContentLoaded", getAll);
+
+        d.addEventListener("click", async e => {
+            const $target = e.target;
+            
+            if($target.matches(".btn-edit")){
+                $form.nombre.value = $target.dataset.nombre;
+                $form.constelacion.value = $target.dataset.constelacion;
+                $form.id.value = $target.dataset.id;
+            }
+
+            if($target.matches(".btn-delete")){
+                try {
+                    const operation = await axios(`http://localhost:5555/santos/${$target.dataset.id}`,{
+                        method: "DELETE"
+                    });
+
+
+                    location.reload();
+
+                } catch (error) {
+                    console.error(error || "Sucedio un error");
+                    $message.classList.add("message--red");
+                    $message.children[0].textContent = error || "Sucedio un error";
+                    $message.classList.remove("d-none");
+                    setTimeout(() => {
+                        $message.classList.add("d-none");
+                    }, 5000);
+                }
+
+            }
+
+        });
+
+        d.addEventListener("submit", async e => {
+            e.preventDefault();
+            const $target = e.target;
+            if($target.matches(".form-crud")){
+                if(!$form.id.value){
+                    console.log($target.constelacion.value);
+                    try {
+                    const operation = await axios("http://localhost:5555/santos", {
+                        method: "POST",
+                        headers: {
+                            "Content-type" : "application/json; charset=utf-8"
+                        },
+                        data: JSON.stringify({
+                          nombre: $target.nombre.value,
+                          constelacion: $target.constelacion.value  
+                        })
+                    })
+
+                    $form.reset();
+                    location.reload();
+
+                    } catch (error) {
+                        console.error(error || "Sucedio un error");
+                    $message.classList.add("message--red");
+                    $message.children[0].textContent = error || "Sucedio un error";
+                    $message.classList.remove("d-none");
+                    setTimeout(() => {
+                        $message.classList.add("d-none");
+                    }, 5000);
+                    }
+                }else{
+                    try {
+                        const operation = await axios(`http://localhost:5555/santos/${$target.id.value}`,
+                    {
+                        method:"PUT",
+                        headers: {
+                            "Content-type" : "application/json; charset=utf-8"
+                        },
+                        data: JSON.stringify({
+                            nombre: $target.nombre.value,
+                            constelacion: $target.constelacion.value
+                        })
+
+                        
+                    })
+
+                        $form.reset();
+                        location.reload();
+                       
+                    } catch (error) {
+                        console.error(error || "Sucedio un error");
+                    $message.classList.add("message--red");
+                    $message.children[0].textContent = error || "Sucedio un error";
+                    $message.classList.remove("d-none");
+                    setTimeout(() => {
+                        $message.classList.add("d-none");
+                    }, 5000);
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles/crud-styles.css">
+</head>
+<body>
+    
+    <section>
+        <article class="article-crud">
+            <div class="brand brand--title">
+                <h1 class="title">CRUD AJAX</h1>
+            </div>
+            <div class="container container--form">
+                <form action="" class="form-crud">
+                    <div class="group-form">
+                        <input type="text" name="nombre" placeholder="Ingrese el nombre" required>
+                    </div>
+                    <div class="group-form">
+                        <input type="text" name="constelacion" placeholder="Ingrese la constelacion" required>
+                    </div>
+                    <button type="submit" class="btn btn--blue">Subir</button>
+                    <input type="hidden" name="id">
+                    <div class="message d-none">
+                        <p class="message__p">Esto es un mensaje</p>
+                    </div>
+                </form>
+            </div>
+            <div class="container">
+                <table class="table-crud">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Nombre</th>
+                            <th>Constelacion</th>
+                            <th>Opciones</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </div>
+        </article>
+    </section>
+    <template id="template-crud">
+        <tr>
+            <td class="id"></td>
+            <td class="nombre"></td>
+            <td class="constelacion"></td>
+            <td class="botones">
+                <button class="btn-edit btn btn--green">Editar</button>
+                <button class="btn-delete btn btn--red">Eliminar</button>
+            </td>
+        </tr>
+    </template>
+    <script>
+        const d = document,
+        $table = d.querySelector(".table-crud"),
+        $form = d.querySelector(".form-crud"),
+        $title = d.querySelector(".title"),
+        $template = d.getElementById("template-crud").content,
+        $fragment = d.createDocumentFragment(),
+        $formBody = $table.querySelector("tbody"),
+        $message = d.querySelector(".message");
+
+        const ajax = (options) => {
+
+        let { method, url, error, success, data } = options;
+
+        const hrx = new XMLHttpRequest();
+        hrx.addEventListener("readystatechange", (e) => {
+            if(hrx.readyState !== 4) return;
+            if(hrx.status >= 200 && hrx.status < 300){
+                success(JSON.parse(hrx.responseText));
+            }else{
+                error(`Status: ${hrx.status} Status Text: ${hrx.statusText}`);
+            }
+
+        });
+        hrx.open(method || "GET", url);
+        hrx.setRequestHeader("Content-type", "application/json; charset=utf-8");
+        hrx.send(JSON.stringify(data));
+        };
+
+        const getAll = () => {
+            ajax({
+            url: "http://localhost:5555/santos",
+            success: (data) => {
+                console.log(data);
+
+                data.forEach((elem) => {
+                    $template.querySelector(".id").textContent = elem.id;
+                    $template.querySelector(".nombre").textContent = elem.nombre;
+                    $template.querySelector(".constelacion").textContent = elem.constelacion;
+                    $template.querySelector(".btn-edit").setAttribute("data-id", elem.id);
+                    $template.querySelector(".btn-edit").setAttribute("data-name", elem.nombre);
+                    $template.querySelector(".btn-edit").setAttribute("data-constellation", elem.constelacion);
+                    $template.querySelector(".btn-delete").setAttribute("data-id", elem.id);
+
+                    const $templateClone = d.importNode($template, true);
+
+                    $fragment.appendChild($templateClone);
+                });
+                
+                $formBody.append($fragment);
+
+            },
+            error: (err) => {
+                console.error(err);
+                $message.classList.add("message--red");
+                $message.children[0].textContent = err;
+                $message.classList.remove("d-none");
+                setTimeout(() => {
+                    $message.classList.add("d-none");
+                }, 5000);
+
+            }
+        })
+        }
+
+        d.addEventListener("DOMContentLoaded", getAll);
+
+        d.addEventListener("submit", e => {
+            e.preventDefault();
+            $target = e.target;
+            if($target.matches(".form-crud")){
+                if(!$target.id.value){
+                    ajax({
+                    method: "POST",
+                    url: "http://localhost:5555/santos",
+                    success: (data) => {
+                        console.log(data);
+                        $message.classList.add("message--blue");
+                        $message.children[0].textContent = `Exito`;
+                        $message.classList.remove("d-none");
+                        setTimeout(() => {
+                            $message.classList.add("d-none");
+                        }, 5000);
+                    },
+                    error: (err) => {
+                        $message.classList.add("message--red");
+                        $message.children[0].textContent = err;
+                        $message.classList.remove("d-none");
+                        setTimeout(() => {
+                            $message.classList.add("d-none");
+                        }, 5000);
+                    },
+                    data: {
+                        nombre: $target.nombre.value,
+                        constelacion: $target.constelacion.value
+                    }
+                });
+                }else if($form.id.value){
+                    ajax({
+                        method: "PUT",
+                        url: `http://localhost:5555/santos/${$form.id.value}`,
+                        success: (data) => {
+                        
+                        },
+                        error: (err) => {
+                            $message.classList.add("message--red");
+                            $message.children[0].textContent = err;
+                            $message.classList.remove("d-none");
+                            setTimeout(() => {
+                                $message.classList.add("d-none");
+                            }, 5000);
+                        },
+                        data: {
+                            nombre: $form.nombre.value,
+                            constelacion: $form.constelacion.value
+                        }
+                    });
+                }
+            }
+        });
+
+        d.addEventListener("click", e => {
+            const $target = e.target;
+            if($target.matches(".btn-edit")){
+                $form.nombre.value = $target.dataset.name;
+                $form.constelacion.value = $target.dataset.constellation;
+                $form.id.value = $target.dataset.id;
+            }else if($target.matches(".btn-delete")){
+                ajax({
+                    method: "DELETE",
+                    url: `http://localhost:5555/santos/${$target.dataset.id}`,
+                    success: (data) => {
+                        
+                    },
+                    error: (err) =>{
+                        $message.classList.add("message--red");
+                        $message.children[0].textContent = err;
+                        $message.classList.remove("d-none");
+                        setTimeout(() => {
+                            $message.classList.add("d-none");
+                        }, 5000);
+                    }
+                })
+            }
+        });
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+.scroll {
+  position: fixed;
+  bottom: -100%;
+  right: 0px;
+  width: 70px;
+  height: 70px;
+  margin-right: 15px;
+  margin-bottom: 15px;
+  background-color: var(--main-color);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.5s bottom ease;
+  z-index: 11000;
+}
+
+.scroll-up {
+  font-size: 2em;
+  color: white;
+}
+
+.scroll-ver {
+  bottom: 0px;
+}

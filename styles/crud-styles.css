@@ -1,0 +1,148 @@
+:root {
+  --font-main: "Roboto", sans-serif;
+  --font-size: 16px;
+  --font-color: #3b4252;
+  --btn-blue: #428bca;
+  --btn-blue-dark: #3877ad;
+  --btn-green: #5cb85c;
+  --btn-green-dark: #499449;
+  --btn-red: #d9534f;
+  --btn-red-dark: #a8413d;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:after,
+*:before {
+  box-sizing: inherit;
+}
+
+body {
+  font-size: var(--font-size);
+  font-family: var(--font-main);
+  color: var(--font-color);
+}
+
+.container {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 5em;
+}
+
+.brand.brand--title {
+  border: 1px solid rgb(228, 228, 228);
+}
+
+.container--form {
+  display: flex;
+}
+
+.title {
+  font-size: 1.5em;
+  padding: 1em;
+}
+
+.form-crud {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 1.25em;
+}
+
+.group-form {
+  width: 100%;
+}
+
+.group-form > input[type="text"] {
+  width: 100%;
+  padding: 1em;
+}
+
+.group-form > input[type="text"]:focus {
+  outline: 3px solid rgba(66, 139, 202, 0.6);
+}
+
+.btn {
+  border: 0;
+  padding: 1em;
+  width: max-content;
+  cursor: pointer;
+  transition: 0.3s background-color ease;
+  color: white;
+  border-radius: 0.3em;
+}
+
+.btn--blue {
+  background-color: var(--btn-blue);
+}
+
+.btn--blue:hover {
+  background-color: var(--btn-blue-dark);
+}
+
+.btn--red {
+  background-color: var(--btn-red);
+}
+
+.btn--red:hover {
+  background-color: var(--btn-red-dark);
+}
+
+.btn--green {
+  background-color: var(--btn-green);
+}
+
+.btn--green:hover {
+  background-color: var(--btn-green-dark);
+}
+
+.table-crud {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead tr th {
+  padding: 1.3em;
+  color: white;
+}
+
+thead {
+  background-color: var(--font-color);
+}
+
+tbody tr td {
+  padding: 1.3em;
+}
+
+tbody tr:nth-child(even) {
+  background-color: var(--font-color);
+  color: white;
+}
+
+.d-none {
+  display: none;
+}
+
+.message {
+  width: 100%;
+}
+
+.message.message--red {
+  background-color: var(--btn-red);
+}
+
+.message.message--blue {
+  background-color: var(--btn-blue);
+}
+
+.message .message__p {
+  color: white;
+  margin: 0;
+  padding: 15px;
+  text-align: center;
+}
